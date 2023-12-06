@@ -1,4 +1,5 @@
-﻿using System;
+﻿        using System;
+using GalleryApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace GalleryApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new GalleryPage());
         }
 
         protected override void OnStart ()

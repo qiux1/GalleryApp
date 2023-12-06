@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="GalleryApp.Views.DetailPage"
+             BackgroundColor="Transparent">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back" Command="{Binding NavigateBackCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <RelativeLayout BackgroundColor="Transparent">
+            <!-- CarouselView for displaying images -->
+            <CarouselView x:Name="imageCarousel"
+                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                          ItemsSource="{Binding Images}"
+                          Position="{Binding CurrentPosition, Mode=TwoWay}"
+                          BackgroundColor="Transparent">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <ffimageloading:CachedImage Source="{Binding Filename}"
+                                                        Aspect="AspectFill"
+                                                        DownsampleToViewSize="true"
+                                                        DownsampleHeight="1000"
+                                                        BackgroundColor="Transparent" />
+                            <!-- Favorite Icon -->
+                            <Image Source="{Binding IsFavorite, Converter={StaticResource FavoriteIconConverter}}"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Start"
+                                   Margin="10"
+                                   HeightRequest="30"
+                                   WidthRequest="30">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFavoriteTapped" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <!-- Left Arrow Indicator -->
+            <Frame BackgroundColor="#99000000"
+                   CornerRadius="20"
+                   HeightRequest="40"
+                   WidthRequest="40"
+                   Padding="0"
+                   HasShadow="True"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-20}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=10}">
+                <Grid VerticalOptions="Center"
+                      HorizontalOptions="Center">
+                    <Label Text="&#x2190;"
+                           FontSize="Large"
+                           TextColor="White" />
+                </Grid>
+            </Frame>
+
+            <!-- Right Arrow Indicator -->
+            <Frame BackgroundColor="#99000000"
+                   CornerRadius="20"
+                   HeightRequest="40"
+                   WidthRequest="40"
+                   Padding="0"
+                   HasShadow="True"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-20}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-50}">
+                <Grid VerticalOptions="Center"
+                      HorizontalOptions="Center">
+                    <Label Text="&#x2192;"
+                           FontSize="Large"
+                           TextColor="White" />
+                </Grid>
+            </Frame>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
