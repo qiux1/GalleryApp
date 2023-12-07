@@ -6,8 +6,9 @@
              BackgroundColor="Transparent">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Back" Command="{Binding NavigateBackCommand}" />
+        <ToolbarItem Text="Favorites" Clicked="OnFavoritesClicked" />
     </ContentPage.ToolbarItems>
+
 
     <ContentPage.Content>
         <RelativeLayout BackgroundColor="Transparent">
@@ -22,7 +23,7 @@
                     <DataTemplate>
                         <Grid>
                             <ffimageloading:CachedImage Source="{Binding Filename}"
-                                                        Aspect="AspectFit"
+                                                        Aspect="AspectFill"
                                                         DownsampleToViewSize="true"
                                                         DownsampleHeight="1000"
                                                         BackgroundColor="Transparent" />
@@ -51,10 +52,12 @@
                    HasShadow="True"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-20}"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=10}">
-                <Image Source="left_arrow.png"
-                       Aspect="AspectFit"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
+                <Grid VerticalOptions="Center"
+                      HorizontalOptions="Center">
+                    <Label Text="&#x2190;"
+                           FontSize="Large"
+                           TextColor="White" />
+                </Grid>
             </Frame>
 
             <!-- Right Arrow Indicator -->
@@ -66,10 +69,12 @@
                    HasShadow="True"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-20}"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-50}">
-                <Image Source="right_arrow.png" 
-                       Aspect="AspectFit"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
+                <Grid VerticalOptions="Center"
+                      HorizontalOptions="Center">
+                    <Label Text="&#x2192;"
+                           FontSize="Large"
+                           TextColor="White" />
+                </Grid>
             </Frame>
         </RelativeLayout>
     </ContentPage.Content>

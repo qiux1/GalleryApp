@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="GalleryApp.Views.FavoritePage"
+             Title="Favorites">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Gallery" Clicked="OnGalleryClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <CollectionView x:Name="favoritesCollectionView"
+                        ItemsSource="{Binding FavoriteImages}"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="3" Orientation="Vertical" VerticalItemSpacing="5" HorizontalItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="2" HasShadow="False" BackgroundColor="Transparent">
+                        <ffimageloading:CachedImage Source="{Binding Filename}" Aspect="AspectFill" 
+                                                    WidthRequest="100" HeightRequest="100"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

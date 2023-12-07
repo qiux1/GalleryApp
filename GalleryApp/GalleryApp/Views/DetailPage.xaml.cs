@@ -11,7 +11,7 @@ namespace GalleryApp.Views
     {
         public ObservableCollection<ImageModel> Images { get; private set; }
         private string _currentImageFilename;
-        public ICommand NavigateBackCommand { get; private set; }
+        //public ICommand NavigateToFavoritesCommand { get; private set; }
         double width = 0;
         double height = 0;
 
@@ -32,10 +32,16 @@ namespace GalleryApp.Views
         public DetailPage(string currentImageFilename, ObservableCollection<ImageModel> images)
         {
             InitializeComponent();
-            NavigateBackCommand = new Command(async () => await Navigation.PopAsync());
+            
             _currentImageFilename = currentImageFilename;
             Images = images;
             BindingContext = this;
+
+            //NavigateToFavoritesCommand = new Command(async () =>
+            //{
+                // Create an ObservableCollection from the list of favorite images
+            //   await Navigation.PushAsync(new FavoritePage(new ObservableCollection<ImageModel>(Images.Where(img => img.IsFavorite))));
+            //});
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -111,8 +117,17 @@ namespace GalleryApp.Views
             if (sender is Image image && image.BindingContext is ImageModel model)
             {
                 model.IsFavorite = !model.IsFavorite;
-                // Optionally, update the UI or save the favorite state
+        
             }
+        }
+
+        // New event handler for Favorites toolbar item clicked
+        private async void OnFavoritesClicked(object sender, EventArgs e)
+        {
+            // Assuming FavoritePage has a constructor that accepts a collection of ImageModel
+            var favoriteImages = new ObservableCollection<ImageModel>(Images.Where(img => img.IsFavorite));
+            var favoritePage = new FavoritePage(favoriteImages);
+            await Navigation.PushAsync(favoritePage);
         }
     }
 }

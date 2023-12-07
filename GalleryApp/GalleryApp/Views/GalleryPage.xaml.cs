@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using GalleryApp.Models;
 using GalleryApp.ViewModel;
@@ -9,6 +10,8 @@ namespace GalleryApp.Views
     public partial class GalleryPage : ContentPage
     {
         readonly GalleryViewModel viewModel;
+        // Initialize the Images collection
+        public ObservableCollection<ImageModel> Images { get; private set; }
         double width = 0;
         double height = 0;
 
@@ -17,6 +20,8 @@ namespace GalleryApp.Views
             InitializeComponent();
             viewModel = new GalleryViewModel();
             BindingContext = viewModel;
+
+            Images = viewModel.Images;
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -60,6 +65,15 @@ namespace GalleryApp.Views
 
             // Deselect the item
             ((CollectionView)sender).SelectedItem = null;
+        }
+
+        // New event handler for Favorites toolbar item clicked
+        private async void OnFavoritesClicked(object sender, EventArgs e)
+        {
+            // Assuming FavoritePage has a constructor that accepts a collection of ImageModel
+            var favoriteImages = new ObservableCollection<ImageModel>(Images.Where(img => img.IsFavorite));
+            var favoritePage = new FavoritePage(favoriteImages);
+            await Navigation.PushAsync(favoritePage);
         }
     }
 }
