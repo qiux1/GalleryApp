@@ -23,7 +23,7 @@
                     <DataTemplate>
                         <Grid>
                             <ffimageloading:CachedImage Source="{Binding Filename}"
-                                                        Aspect="AspectFill"
+                                                        Aspect="AspectFit"
                                                         DownsampleToViewSize="true"
                                                         DownsampleHeight="1000"
                                                         BackgroundColor="Transparent" />
