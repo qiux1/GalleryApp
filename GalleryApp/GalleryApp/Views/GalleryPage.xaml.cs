@@ -14,7 +14,7 @@ namespace GalleryApp.Views
         double width = 0;
         double height = 0;
 
-        // Constructor: Initializes the GalleryPage
+        // Constructor
         public GalleryPage()
         {
             InitializeComponent();
@@ -58,7 +58,7 @@ namespace GalleryApp.Views
         }
 
         // Event handler for when an item in the CollectionView is selected
-        async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var currentSelection = e.CurrentSelection.FirstOrDefault() as ImageModel;
             if (currentSelection == null)

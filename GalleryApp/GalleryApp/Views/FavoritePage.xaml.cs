@@ -11,7 +11,7 @@ namespace GalleryApp.Views
         // Collection of favorite images to display
         public ObservableCollection<ImageModel> FavoriteImages { get; private set; }
 
-        // Constructor: Initializes the FavoritePage with a collection of all images
+        // Constructor
         public FavoritePage(ObservableCollection<ImageModel> allImages)
         {
             InitializeComponent();

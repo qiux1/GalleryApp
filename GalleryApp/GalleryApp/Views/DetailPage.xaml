@@ -12,7 +12,6 @@
 
     <ContentPage.Content>
         <RelativeLayout BackgroundColor="Transparent">
-            <!-- CarouselView for displaying images -->
             <CarouselView x:Name="imageCarousel"
                           RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                           RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
@@ -27,7 +26,6 @@
                                                         DownsampleToViewSize="true"
                                                         DownsampleHeight="1000"
                                                         BackgroundColor="Transparent" />
-                            <!-- Favorite Icon -->
                             <Image Source="{Binding IsFavorite, Converter={StaticResource FavoriteIconConverter}}"
                                    HorizontalOptions="End"
                                    VerticalOptions="Start"
@@ -43,7 +41,6 @@
                 </CarouselView.ItemTemplate>
             </CarouselView>
 
-            <!-- Left Arrow Indicator -->
             <Frame BackgroundColor="#99000000"
                    CornerRadius="20"
                    HeightRequest="40"
@@ -60,7 +57,6 @@
                 </Grid>
             </Frame>
 
-            <!-- Right Arrow Indicator -->
             <Frame BackgroundColor="#99000000"
                    CornerRadius="20"
                    HeightRequest="40"

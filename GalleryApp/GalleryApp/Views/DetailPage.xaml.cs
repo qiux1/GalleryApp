@@ -32,7 +32,7 @@ namespace GalleryApp.Views
             }
         }
 
-        // Constructo
+        // Constructor
         public DetailPage(string currentImageFilename, ObservableCollection<ImageModel> images)
         {
             InitializeComponent();
