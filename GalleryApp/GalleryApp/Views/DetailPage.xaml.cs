@@ -12,6 +12,8 @@ namespace GalleryApp.Views
         public ObservableCollection<ImageModel> Images { get; private set; }
         private string _currentImageFilename;
         public ICommand NavigateBackCommand { get; private set; }
+        double width = 0;
+        double height = 0;
 
         public string CurrentImageFilename
         {
@@ -34,6 +36,36 @@ namespace GalleryApp.Views
             _currentImageFilename = currentImageFilename;
             Images = images;
             BindingContext = this;
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    // Landscape layout adjustments
+                    AdjustCarouselViewMargin(new Thickness(20, 10));
+                }
+                else
+                {
+                    // Portrait layout adjustments
+                    AdjustCarouselViewMargin(new Thickness(10));
+                }
+            }
+        }
+
+        private void AdjustCarouselViewMargin(Thickness margin)
+        {
+            if (this.FindByName<CarouselView>("imageCarousel") is CarouselView carouselView)
+            {
+                carouselView.Margin = margin;
+            }
         }
 
         protected override void OnAppearing()

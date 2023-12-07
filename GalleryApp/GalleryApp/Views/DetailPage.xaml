@@ -22,7 +22,7 @@
                     <DataTemplate>
                         <Grid>
                             <ffimageloading:CachedImage Source="{Binding Filename}"
-                                                        Aspect="AspectFill"
+                                                        Aspect="AspectFit"
                                                         DownsampleToViewSize="true"
                                                         DownsampleHeight="1000"
                                                         BackgroundColor="Transparent" />
@@ -51,12 +51,10 @@
                    HasShadow="True"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-20}"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=10}">
-                <Grid VerticalOptions="Center"
-                      HorizontalOptions="Center">
-                    <Label Text="&#x2190;"
-                           FontSize="Large"
-                           TextColor="White" />
-                </Grid>
+                <Image Source="left_arrow.png"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
             </Frame>
 
             <!-- Right Arrow Indicator -->
@@ -68,12 +66,10 @@
                    HasShadow="True"
                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5, Constant=-20}"
                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-50}">
-                <Grid VerticalOptions="Center"
-                      HorizontalOptions="Center">
-                    <Label Text="&#x2192;"
-                           FontSize="Large"
-                           TextColor="White" />
-                </Grid>
+                <Image Source="right_arrow.png" 
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
             </Frame>
         </RelativeLayout>
     </ContentPage.Content>

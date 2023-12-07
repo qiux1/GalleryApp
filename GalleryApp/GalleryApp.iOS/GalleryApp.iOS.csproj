@@ -143,5 +143,28 @@
     <BundleResource Include="Resources\Image4.jpg" />
     <BundleResource Include="Resources\favorite_filled.png" />
     <BundleResource Include="Resources\favorite_outline.png" />
+    <BundleResource Include="Resources\Image5.jpg" />
+    <BundleResource Include="Resources\Image6.jpg" />
+    <BundleResource Include="Resources\Image7.jpg" />
+    <BundleResource Include="Resources\Image8.jpg" />
+    <BundleResource Include="Resources\Image9.jpg" />
+    <BundleResource Include="Resources\Image10.jpg" />
+    <BundleResource Include="Resources\Image12.jpg" />
+    <BundleResource Include="Resources\Image13.jpg" />
+    <BundleResource Include="Resources\Image14.jpg" />
+    <BundleResource Include="Resources\Image15.jpg" />
+    <BundleResource Include="Resources\Image16.jpg" />
+    <BundleResource Include="Resources\Image17.jpg" />
+    <BundleResource Include="Resources\Image18.jpg" />
+    <BundleResource Include="Resources\Image19.jpg" />
+    <BundleResource Include="Resources\Image21.jpg" />
+    <BundleResource Include="Resources\Image22.jpg" />
+    <BundleResource Include="Resources\Image23.jpg" />
+    <BundleResource Include="Resources\Image24.jpg" />
+    <BundleResource Include="Resources\Image25.jpg" />
+    <BundleResource Include="Resources\right_arrow.png" />
+    <BundleResource Include="Resources\left_arrow.png" />
+    <BundleResource Include="Resources\Image11.jpg" />
+    <BundleResource Include="Resources\Image20.jpg" />
   </ItemGroup>
 </Project>

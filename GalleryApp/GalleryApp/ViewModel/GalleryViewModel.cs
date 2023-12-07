@@ -17,14 +17,15 @@ namespace GalleryApp.ViewModel
 
         public GalleryViewModel()
         {
-            Images = new ObservableCollection<ImageModel>
+            Images = new ObservableCollection<ImageModel>();
+
+            
+            int totalImages = 25;
+            for (int i = 1; i <= totalImages; i++)
             {
-                new ImageModel { Filename = "Image1.jpg", IsFavorite = false },
-                new ImageModel { Filename = "Image2.jpg", IsFavorite = false },
-                new ImageModel { Filename = "Image3.jpg", IsFavorite = false },
-                new ImageModel { Filename = "Image4.jpg", IsFavorite = false },
-                // Add more images as needed
-            };
+                string filename = $"Image{i}.jpg";
+                Images.Add(new ImageModel { Filename = filename, IsFavorite = false });
+            }
 
             ToggleFavoriteCommand = new Command<ImageModel>(ToggleFavorite);
         }

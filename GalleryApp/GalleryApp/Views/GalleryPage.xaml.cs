@@ -9,12 +9,44 @@ namespace GalleryApp.Views
     public partial class GalleryPage : ContentPage
     {
         readonly GalleryViewModel viewModel;
+        double width = 0;
+        double height = 0;
 
         public GalleryPage()
         {
             InitializeComponent();
             viewModel = new GalleryViewModel();
             BindingContext = viewModel;
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    // Landscape layout adjustments
+                    AdjustCollectionViewLayout(4); // Example: 4 columns in landscape
+                }
+                else
+                {
+                    // Portrait layout adjustments
+                    AdjustCollectionViewLayout(3); // Example: 3 columns in portrait
+                }
+            }
+        }
+
+        private void AdjustCollectionViewLayout(int columns)
+        {
+            if (galleryCollectionView?.ItemsLayout is GridItemsLayout gridLayout)
+            {
+                gridLayout.Span = columns;
+            }
         }
 
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
